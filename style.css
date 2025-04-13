@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=GFS+Didot&family=Playfair+Display&display=swap');
+
+:root {
+  --olive: #4B6F44;
+  --cream: #f4f1ee;
+  --text-dark: #2e2a26;
+  --accent: #c8b6a6;
+  --light-gray: #ddd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--cream);
+  padding: 25px 40px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.logo {
+  font-family: 'GFS Didot', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--olive);
+}
+
+.nav-links a,
+.user-actions a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 1.25rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.user-actions a:hover {
+  color: var(--olive);
+}
+
+.hero {
+  text-align: center;
+  padding: 20px 20px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.05rem;
+  font-family: 'GFS Didot', serif;
+  color: var(--text-dark);
+}
+
+.hero p {
+  margin-top: 0.01rem;
+  margin-bottom: 1rem;
+
+  font-size: 1.2rem;
+  color: var(--accent);
+  padding:8px
+}
+
+.hero-image {
+  width: 100%;
+  height: 350px;
+  margin-top: 60px;
+  background-color: var(--light-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-style: italic;
+}
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.carousel img {
+  width: 100%;
+  height: 700px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  background-color: aliceblue;
+}
+
+.slide {
+  flex: 0 0 100%;
+  display: flex;
+  min-width: 100%;
+  justify-content: space-between;
+}
+
+.slide img {
+  width:100%;
+  object-fit: cover;
+  height: 500px; /* fixed height for testing */
+}
+
+.buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+.buttons button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+.hr { 
+  display: block;
+  margin-top: 8rem;
+  margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+.collection {
+  padding: 80px 40px;
+  margin-top:  50px;
+  margin-bottom: 50px;
+}
+
+.collection h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--olive);
+}
+
+.swiper {
+  padding-bottom: 40px;
+}
+
+.swiper-wrapper {
+  display: flex;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+.product-card {
+  width: 250px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-img {
+  height: 300px;
+  background-color: var(--light-gray);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-card h3 {
+  font-size: 1.1rem;
+  margin: 10px 0 5px;
+}
+
+.product-card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}
+  
+.product-link {
+  text-decoration: none;
+  color: inherit;
+}
+.swiper-slide a {
+  pointer-events: auto;
+}
+
+
+.video-text-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 30px;
+  background-color: #f8f5f0; /* couleur douce et naturelle */
+}
+
+.video-container,
+.text-container {
+  flex: 1 1 500px;
+  max-width: 50%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.video-container video {
+  width: 100%;
+  height: 700px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.text-container h2 {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+  font-family: 'GFS Didot', serif;
+}
+
+.text-container p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+  font-family: 'GFS Didot', serif;
+}
+
+
+/* Media container (video) on the right for the second video */
+.video2-container {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  order: 2; /* Ensures the video appears after the text */
+}
+
+/* Second video styles */
+.video2 {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 8px ;
+}
+
+
+.video-text-section {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 500px;
+}
+
+.text-container {
+  flex: 1 1 50%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f8f8f8; /* Change the color as you like */
+}
+
+.text-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.text-container p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+.form-section {
+  flex: 1;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.form-section.alt {
+  background-color: #eae8e3;
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #2e2b27;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #5c5a57;
+}
+
+input {
+  padding: 0.9rem;
+  border: 1px solid #ccc;
+  background-color: #fdfdfc;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #8d9b6c;
+  outline: none;
+}
+
+button {
+  padding: 1rem;
+  border: none;
+  background-color: #8d9b6c;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #6f7e55;
+  transform: translateY(-2px);
+}
+
+
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+
+
+footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.8rem;
+  color: #777;
+  border-top: 1px solid var(--light-gray);
+}

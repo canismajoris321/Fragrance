@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Stores</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=GFS+Didot&family=Playfair+Display&display=swap');
+
+:root {
+  --olive: #4B6F44;
+  --cream: #f4f1ee;
+  --text-dark: #2e2a26;
+  --accent: #c8b6a6;
+  --light-gray: #ddd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--cream);
+  padding: 25px 40px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.logo {
+  font-family: 'GFS Didot', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--olive);
+}
+
+.nav-links a,
+.user-actions a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 1.25rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.user-actions a:hover {
+  color: var(--olive);
+}
+
+.stores-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;}
+
+
+.stores-section h1{
+  font-size: 2.5rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.05rem;
+  font-family: 'GFS Didot', serif;
+  color: #4b5d3b;
+}
+
+.stores-section p {
+  margin-top: 0.01rem;
+  margin-bottom: 1rem;
+
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  padding:8px
+}
+
+.store-card {
+  background-color: #ffffff;
+  border: 1px solid #e6e3de;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  width: 100%; /* Chaque carte occupe toute la largeur du parent */
+  max-width: 1000px; /* Limite la largeur des cartes */
+  box-shadow: 0 5px 10px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease;
+}
+
+.store-card:hover {
+  transform: translateY(-4px);
+}
+
+.store-name {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--olive);
+}
+
+.store-info {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.map-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--olive);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.map-button:hover {
+  background-color: #5f6f5e;
+}
+
+.shop-online {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.shop-online a {
+  color: var(--olive);
+  text-decoration: underline;
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .stores-section {
+    padding: 2rem 1rem;
+  }
+}
+
+
+
+
+    footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.8rem;
+  color: #777;
+  border-top: 1px solid var(--light-gray);
+} 
+
+  </style>
+</head>
+<body>
+    <header>Fleur & Fern</div>
+        <nav class="nav-links">
+          <a href="projet.html">Home</a>
+          <a href="frag.html">Fragrance</a>
+          <a href="gifts.html">Gifts</a>
+          <a href="stores.html">Stores</a>
+        </nav>
+        <div class="user-actions">
+          <a href="login.html">Log in</a>
+          <a href="cart.html">Cart</a>
+        </div>
+      </header>
+
+
+  <section class="stores-section">
+    <h1>Our Stores</h1>
+    <p class="intro">
+      Each store is a gateway to our world — where time slows, and the delicate soul of dried flowers lingers in the air.
+    </p>
+
+
+    <div class="store-card">
+        <div class="store-name">Fleur & Fern – Tunis</div>
+        <div class="store-info">
+        Rue des Herbes Sèches – La Marsa<br/>
+        75003 Marsa, Tunisia<br/>
+          
+          Monday–Saturday: 10am – 7pm<br/>
+          Phone: +33 1 23 45 67 89
+        </div>
+        <a class="map-button" href="https://maps.google.com" target="_blank">View on Map</a>
+      </div>
+
+
+    <!-- Store 1 -->
+    <div class="store-card">
+      <div class="store-name">Fleur & Fern – Paris</div>
+      <div class="store-info">
+        12 Rue des Fleurs Séchées<br/>
+        75003 Paris, France<br/>
+        Monday–Saturday: 10am – 7pm<br/>
+        Phone: +216 1 23 45 67 89
+      </div>
+      <a class="map-button" href="https://maps.google.com" target="_blank">View on Map</a>
+    </div>
+
+    <!-- Store 2 -->
+    <div class="store-card">
+      <div class="store-name">Fleur & Fern – Greece</div>
+      <div class="store-info">
+        7 Passage Botanique<br/>
+        69002 Athene, Greece<br/>
+        Tuesday–Sunday: 11am – 6pm<br/>
+        Phone: +33 4 56 78 90 12
+      </div>
+      <a class="map-button" href="https://maps.google.com" target="_blank">View on Map</a>
+    </div>
+
+    <!-- Store 3 -->
+    <div class="store-card">
+      <div class="store-name">Fleur & Fern – London</div>
+      <div class="store-info">
+        28 Bloom Lane<br/>
+        Kensington, London W8 4HQ, UK<br/>
+        Monday–Friday: 10am – 6pm<br/>
+        Phone: +44 20 7946 0011
+      </div>
+      <a class="map-button" href="https://maps.google.com" target="_blank">View on Map</a>
+    </div>
+
+    <div class="shop-online">
+      <p>Let the fragrance find you — <a href="frag.html">discover our collection →</a></p>
+
+    </div>
+  </section>
+   <!-- Footer Section -->
+   <footer class="footer">
+    <p>&copy; 2025 Fleur & Fern. All rights reserved.</p>
+    <p>Gently shaped in harmony with nature — site developed & designed by Farah Derbel</p>
+    </footer>
+</body>
+</html>

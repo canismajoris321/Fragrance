@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart | Fleur & Fern</title>
+  <style>
+    :root {
+      --olive: #4B6F44;
+      --cream: #f4f1ee;
+      --text-dark: #2e2a26;
+      --accent: #c8b6a6;
+      --light-gray: #ddd;
+      --soft-beige: #f1ebe3;
+      --warm-peach: #f6d1b1;
+      --deep-rose: #d2a39c;
+      --vibrant-orange: #d55526;
+    }
+    
+    body {
+      font-family: 'Georgia', serif;
+      background-color: var(--cream);
+      color: var(--text-dark);
+      padding: 40px 20px;
+      margin: 0;
+      background-image: linear-gradient(to right, var(--soft-beige), var(--cream));
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--cream);
+      padding: 25px 40px;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .logo {
+      font-family: 'GFS Didot', serif;
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--olive);
+    }
+
+    .nav-links a,
+    .user-actions a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 1.25rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .user-actions a:hover {
+      color: var(--olive);
+    }
+
+    .cart-container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid var(--light-gray);
+      background-color: var(--cream);
+      overflow: hidden;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: var(--text-dark);
+      text-align: center;
+      font-family: 'Georgia', serif;
+      font-weight: 700;
+    }
+
+    .product {
+      display: flex;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--light-gray);
+      padding-bottom: 15px;
+    }
+
+    .product img {
+      display: block;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--light-gray);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      margin-right: 20px;
+    }
+
+    .product-details {
+      flex-grow: 1;
+    }
+
+    .product-details h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: var(--olive);
+    }
+
+    .product-details p {
+      font-size: 16px;
+      margin: 5px 0;
+      color: var(--text-dark);
+      font-weight: 400;
+    }
+
+    .quantity-control {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .quantity-control button {
+      background-color: var(--olive);
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .quantity-control button:hover {
+      background-color: #3a5536;
+      transform: scale(1.05);
+    }
+
+    .quantity-control p {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .product-price {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--olive);
+    }
+
+    /* Adjusting the total price */
+    .total-price {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--vibrant-orange);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .buy-btn {
+      background-color: var(--olive);
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 12px;
+      width: 100%;
+      margin-top: 40px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .buy-btn:hover {
+      background-color: #3a5536;
+    }
+
+    .suggestions {
+      margin-top: 40px;
+      background-color: #ffe4e1; /* Updated color */
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .suggestions h3 {
+      font-size: 22px;
+      color: var(--olive);
+    }
+
+    .suggestions button {
+      background-color: var(--olive);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 18px;
+      margin-top: 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .suggestions button:hover {
+      background-color: #3a5536;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 14px;
+      color: var(--accent);
+    }
+
+    .footer p {
+      margin: 5px;
+    }
+
+    @media (max-width: 600px) {
+      .cart-container {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .product img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .product-details h3 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>Fleur & Fern</div>
+    <nav class="nav-links">
+      <a href="projet.html">Home</a>
+      <a href="frag.html">Fragrance</a>
+      <a href="gifts.html">Gifts</a>
+      <a href="stores.html">Stores</a>
+    </nav>
+    <div class="user-actions">
+      <a href="login.html">Log in</a>
+      <a href="cart.html">Cart</a>
+    </div>
+  </header>
+
+  <div class="cart-container">
+    <h2>Your Cart</h2>
+
+    <div id="product-list">
+      <!-- Dynamic Product List Will Be Added Here -->
+    </div>
+
+    <div class="total-price">
+      Total Price: <span id="total-price">0</span> berries
+    </div>
+
+    <a href="form.html">
+      <button class="buy-btn">Confirm Purchase</button>
+    </a>
+
+    <div class="suggestions">
+      <h3>Would you like something else?</h3>
+      <p>Choose from our premium dried flower sets, or create a personalized arrangement!</p>
+      <button onclick="showMoreSuggestions()">Yes, show me more!</button>
+    </div>
+  </div>
+
+  <script>
+    let cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function updateTotalPriceDisplay() {
+      const totalPrice = getTotalPrice();
+      document.getElementById('total-price').textContent = totalPrice;
+      localStorage.setItem('totalPrice', totalPrice);
+    }
+
+    function getTotalPrice() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+      if (cart.length === 0) {
+        return 0;
+      }
+  
+      let totalPrice = cart.reduce((total, product) => {
+        const volumeBerries = product.volume ? product.volume * 50 : 0;  // Add 50 berries per volume selected
+        return total + (product.price * product.quantity) + volumeBerries;  // Add volume berries separately
+      }, 0);
+  
+      return totalPrice;
+    }
+
+    function renderCart() {
+      const productList = document.getElementById("product-list");
+      productList.innerHTML = '';
+  
+      if (cartProducts.length === 0) {
+        productList.innerHTML = '<p>Your cart is empty.</p>';
+      } else {
+        cartProducts.forEach(product => {
+          const productElement = document.createElement("div");
+          productElement.classList.add("product");
+  
+          productElement.innerHTML = `
+            <img src="${product.img}" alt="${product.name}">
+            <div class="product-details">
+              <h3>${product.name}</h3>
+              <p>${product.description}</p>
+              <p class="product-price">Price: $${product.price} each</p>
+              <div class="quantity-control">
+                <p>Quantity:</p>
+                <button onclick="changeQty(-1, '${product.name}')">-</button>
+                <span id="qty-${product.name}">${product.quantity}</span>
+                <button onclick="changeQty(1, '${product.name}')">+</button>
+              </div>
+              <div class="volume-selection">
+                <label>Choose Volume:</label>
+                <input type="radio" name="volume-${product.name}" value="50" ${product.volume === 50 ? 'checked' : ''} onclick="updateVolume('${product.name}', 50)"> 50ml
+                <input type="radio" name="volume-${product.name}" value="100" ${product.volume === 100 ? 'checked' : ''} onclick="updateVolume('${product.name}', 100)"> 100ml
+                <input type="radio" name="volume-${product.name}" value="200" ${product.volume === 200 ? 'checked' : ''} onclick="updateVolume('${product.name}', 200)"> 200ml
+                <input type="radio" name="volume-${product.name}" value="300" ${product.volume === 300 ? 'checked' : ''} onclick="updateVolume('${product.name}', 300)"> 300ml
+              </div>
+            </div>
+          `;
+          productList.appendChild(productElement);
+        });
+      }
+    }
+
+    function changeQty(val, productName) {
+      const product = cartProducts.find(p => p.name === productName);
+      if (product) {
+        product.quantity = Math.max(1, product.quantity + val);
+        document.getElementById(`qty-${product.name}`).textContent = product.quantity;
+        updateLocalStorage();
+        renderCart();
+        updateTotalPriceDisplay();
+      }
+    }
+
+    function updateVolume(productName, volume) {
+      const product = cartProducts.find(p => p.name === productName);
+      if (product) {
+        product.volume = volume;
+        updateLocalStorage();
+        renderCart();
+        updateTotalPriceDisplay();
+      }
+    }
+
+    function updateLocalStorage() {
+      localStorage.setItem('cart', JSON.stringify(cartProducts));
+    }
+
+    renderCart();
+    updateTotalPriceDisplay();
+  </script>
+
+  <footer class="footer">
+    <p>&copy; 2025 Fleur & Fern. All rights reserved.</p>
+    <p>Gently shaped in harmony with nature — site developed & designed by Farah Derbel</p>
+  </footer>
+</body>
+</html>

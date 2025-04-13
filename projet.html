@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <title>Fleur & Fern</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>Fleur & Fern</div>
+    <nav class="nav-links">
+      <a href="projet.html">Home</a>
+      <a href="frag.html">Fragrance</a>
+      <a href="gifts.html">Gifts</a>
+      <a href="stores.html">Stores</a>
+    </nav>
+    <div class="user-actions">
+      <a href="login.html">Log in</a>
+      <a href="cart.html">Cart</a>
+    </div>
+  </header>
+  
+  <section class="hero">
+    <h1>The Refinement of Nature</h1>
+    <p>Discover the timeless beauty of dried flowers</p>
+    <div class="carousel-container">
+      <div class="carousel" id="carousel">
+        
+        <div class="slide active">
+          <img src="header14.jpg" alt="Image 1">
+          <img src="header15.jpg" alt="Image 2">
+        </div>
+        
+        <div class="slide">
+          <img src="header2.jpg" alt="Image 3">
+        </div>
+        <div class="slide">
+          <img src="header3.jpg" alt="Image 4">
+        </div>
+      </div>
+      <div class="buttons">
+        <button id="prev">&#10094;</button>
+        <button id="next">&#10095;</button>
+      </div>
+    </div>
+  </section>
+  <script>
+    const carousel = document.getElementById('carousel');
+    const slides = document.querySelectorAll('.slide');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    let currentIndex = 0;
+  
+    function updateCarousel() {
+      const offset = -currentIndex * 100;
+      carousel.style.transform = `translateX(${offset}%)`;
+    }
+  
+    prev.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateCarousel();
+    });
+  
+    next.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    });
+  
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    }, 5000); 
+  </script>
+  
+
+
+<hr>
+
+
+   <section class="collection">
+    
+    <h2>The Essentials</h2>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        
+        
+        <div class="swiper-slide">
+          <a href="frag.html" target="_blank" class="product-link">
+            <div class="product-card">
+              <div class="product-img">
+                <img src="ads1.PNG" alt="Image 1">
+              </div>
+              <h3>Shadow Garden</h3>
+              <p>A mysterious touch, combining the understated beauty of dried flowers</p>
+            </div>
+          </a>
+        </div>
+        
+  
+        <div class="swiper-slide">
+          <a href="frag.html" target="_blank" class="product-link">
+            <div class="product-card">
+              <div class="product-img">
+                <img src="ads6.PNG" alt="Image 2">
+              </div>
+              <h3>Golden Hour</h3>
+              <p>Warm and radiant with hints of amber and rosewood.</p>
+            </div>
+          </a>
+        </div>
+        
+        <div class="swiper-slide">
+          <a href="frag.html" target="_blank" class="product-link">
+            <div class="product-card">
+              <div class="product-img">
+                <img src="ads5.jpg" alt="Image 4">
+              </div>
+              <h3>Evening Bloom</h3>
+              <p>Floral and soft, perfect for calm nights.</p>
+            </div>
+          </a>
+        </div>
+        
+        <div class="swiper-slide">
+          <a href="frag.html" target="_blank" class="product-link">
+            <div class="product-card">
+              <div class="product-img">
+                <img src="ads2.jpg" alt="Image 2">
+              </div>
+              <h3>Dune of Flowers</h3>
+              <p>WInspired by the lightness of petals carried by the wind suggesting freshness, lightness, and nature</p>
+            </div>
+          </a>
+        </div>
+        
+        <div class="swiper-slide">
+          <a href="frag.html" target="_blank" class="product-link">
+            <div class="product-card">
+              <div class="product-img">
+                <img src="ads3.jpg" alt="Image 3">
+              </div>
+              <h3>Sky Emraud</h3>
+              <p>A fragrance as rare and timeless as the flowers it is inspired by</p>
+            </div>
+          </a>
+        </div>
+        
+  
+      <!-- Pagination (si besoin) -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+  
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 40,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        320: { slidesPerView: 1, spaceBetween: 20 },
+        768: { slidesPerView: 2, spaceBetween: 30 },
+        1024: { slidesPerView: 3, spaceBetween: 40 }
+      }
+    });
+  </script>
+  </section>
+
+  <hr>
+
+  <section class="video-text-section">
+    <div class="video-container">
+      <video autoplay muted loop playsinline>
+        <source src="C:\Users\fairy\Desktop\polytech\miniprojetweb\vid1.mp4" type="video/mp4">
+        Votre navigateur ne prend pas en charge la lecture de vidéos.
+      </video>
+    </div>
+    <div class="text-container">
+      <h2>Where Scent Meets Soul</h2>
+      <p>Discover our perfumes crafted from dried flowers — a tribute to nature’s quiet elegance.</p>
+      <p>Each drop carries the whisper of petals, the memory of a bloom, the poetry of time.</p>
+    </div>
+  </section>
+
+  
+  <hr>
+
+
+  <section class="video-text-section">
+    
+    <div class="text-container">
+      <h2>The Soul of the Flowers</h2>
+      <p>Every bottle tells the story of the flowers we carefully choose — each one carrying the spirit of nature’s delicate beauty and fragrance.</p>
+      <p>From the moment we pick the petals to the final distillation, we honor the essence of nature in its pur.est form, delivering a scent that evokes emotion and connection.</p>
+    </div>
+    <div class="media-container video2-container">
+      <video class="video2" autoplay muted loop playsinline>
+        <source src="vid2.mp4" type="video/mp4">
+        Votre navigateur ne prend pas en charge la lecture de vidéos.
+      </video>
+    </div>
+  </section>
+  
+  
+  
+  
+
+  
+  <footer class="footer">
+    <p>&copy; 2025 Fleur & Fern. All rights reserved.</p>
+    <p>Gently shaped in harmony with nature — site developed & designed by Farah Derbel</p>
+    </footer>
+</body>
+</html>

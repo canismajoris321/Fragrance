@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gifts - Curated Eco-Luxury Gifts</title>
+    <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Playfair+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+  --olive: #4B6F44;
+  --cream: #f4f1ee;
+  --text-dark: #2e2a26;
+  --accent: #c8b6a6;
+  --light-gray: #ddd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--cream);
+  padding: 25px 40px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.logo {
+  font-family: 'GFS Didot', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--olive);
+}
+
+.nav-links a,
+.user-actions a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 1.25rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.user-actions a:hover {
+  color: var(--olive);
+}
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--olive);
+            margin-top: 3rem;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-top: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+        }
+
+        .gift-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            gap: 1rem;
+            padding: 2rem;
+}
+
+        .gift-card {
+            background-color: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 12px;
+            padding:2rem;
+            width: 350px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .gift-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .gift-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            
+            border-radius: 8px;
+        }
+
+        .gift-card h3 {
+            font-size: 1.5rem;
+            color: var(--olive);
+            margin-top: 1rem;
+        }
+
+        .gift-card p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .gift-card a {
+            display: inline-block;
+            background-color: var(--olive);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .gift-card a:hover {
+            background-color: #3e5b3d;
+        }
+
+        @media (max-width: 600px) {
+  .stores-section {
+    padding: 2rem 1rem;
+  }
+}
+
+
+
+
+    footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.8rem;
+  color: #777;
+  border-top: 1px solid var(--light-gray);
+} 
+    </style>
+</head>
+<body>
+    <header>Fleur & Fern</div>
+        <nav class="nav-links">
+          <a href="projet.html">Home</a>
+          <a href="frag.html">Fragrance</a>
+          <a href="gifts.html">Gifts</a>
+          <a href="stores.html">Stores</a>
+        </nav>
+        <div class="user-actions">
+          <a href="login.html">Log in</a>
+          <a href="cart.html">Cart</a>
+        </div>
+      </header>
+
+
+    <h1>Gift Sets & Special Offers</h1>
+
+    <p class="intro">Explore our curated collection of eco-friendly and luxurious gifts. Perfect for every occasion, from personalized perfumes to seasonal floral arrangements.</p>
+
+    <div class="gift-container">
+        <!-- Gift Set 1 -->
+        <div class="gift-card">
+            <img src="gift1.jpg" alt="Luxury Dried Flower Perfume Set">
+            <h3>Luxury Dried Flower Perfume Set</h3>
+            <p>A beautifully curated gift set with our signature dried flower perfumes in eco-friendly packaging.</p>
+            <a href="cart.html">Shop Now</a>
+        </div>
+
+        <!-- Gift Set 2 -->
+        <div class="gift-card">
+            <img src="gift2.jpg" alt="Eco-Friendly Subscription Box">
+            <h3>Eco-Friendly Subscription Box</h3>
+            <p>Give the gift of monthly luxury with our eco-conscious floral subscription box.</p>
+            <a href="cart.html">Shop Now</a>
+        </div>
+
+        <!-- Gift Set 3 -->
+        <div class="gift-card">
+            <img src="gift3.jpg" alt="Custom Dried Flower Arrangement">
+            <h3>Custom Dried Flower Arrangement</h3>
+            <p>Create a personalized dried flower arrangement as a gift for someone special.</p>
+            <a href="cart.html">Shop Now</a>
+        </div>
+
+        <!-- Gift Set 4 -->
+        <div class="gift-card">
+            <img src="gift4.jpg" alt="Personalized Perfume Gift Set">
+            <h3>Personalized Perfume Gift Set</h3>
+            <p>Design your own signature perfume gift set with our luxurious dried flower scents.</p>
+            <a href="cart.html">Shop Now</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Fleur & Fern. All rights reserved.</p>
+        <p>Gently shaped in harmony with nature — site developed & designed by Farah Derbel</p>
+        </footer>
+
+</body>
+</html>

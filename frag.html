@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Collection | Fleur & Fern</title>
+  <link rel="stylesheet" href="stylefrag.css">
+</head>
+<body>
+  <header>Fleur & Fern</div>
+    <nav class="nav-links">
+      <a href="projet.html">Home</a>
+      <a href="frag.html">Fragrance</a>
+      <a href="gifts.html">Gifts</a>
+      <a href="stores.html">Stores</a>
+    </nav>
+    <div class="user-actions">
+      <a href="login.html">Log in</a>
+      <a href="cart.html">Cart</a>
+    </div>
+  </header>
+
+  <section class="product-section">
+    <h2>Our Fragrance Collection</h2>
+    <div class="product-gallery" id="product-gallery">
+      <!-- Product Cards will be dynamically generated here -->
+    </div>
+  </section>
+
+  <script>
+    // Array containing all the product data
+    const products = [
+      { name: "Golden Hour", price: 350, description: "Warm and radiant with hints of amber and rosewood.", img: "ads6.PNG" },
+      { name: "Ancient Mist", price: 600, description: "Smoky lavender, myrrh, and paper-dry florals. Ghosts of old libraries.", img: "frag2.jpg" },
+      { name: "Sakura Flower", price: 400, description: "Delicate and fleeting, like the first spring blossom.", img: "frag1.png" },
+      { name: "Shadow Garden", price: 200, description: "A mysterious touch, combining the understated beauty of dried flowers.", img: "ads1.PNG" },
+      { name: "Bloody Garden", price: 1500, description: "The scent lingers like a forbidden garden, both beautiful and haunting.", img: "frag3.jpg" },
+      { name: "Evening Bloom", price: 150, description: "Floral and soft, perfect for calm nights.", img: "ads5.jpg" },
+      { name: "Dune of Flowers", price: 200, description: "Inspired by the lightness of petals carried by the wind suggesting freshness, lightness, and nature.", img: "ads2.jpg" },
+      { name: "Moon Bloom", price: 800, description: "Delicate dried flowers bathed in white musk and moonlight. A floral dream with a mysterious edge.", img: "frag8.jpg" },
+      { name: "Sky Emerald", price: 499, description: "A fragrance as rare and timeless as the flowers it is inspired by.", img: "ads3.jpg" },
+      { name: "Whispers of Eden", price: 700, description: "A fragrance that captures the essence of a hidden garden, with notes of jasmine, green apple, and dewy petals, evoking the peaceful allure of nature.", img: "frag4.jpg" },
+      { name: "Twilight Reverie", price: 470, description: "A dreamy, enchanting scent with lavender, amber, and soft rose, perfect for those moments when the day turns into night, filled with possibilities.", img: "frag5.jpg" },
+      { name: "Opal Serenade", price: 400, description: "A delicate, shimmering perfume of pear, iris, and soft musk, as if serenading the senses with the quiet elegance of an opal under the moonlight.", img: "frag6.jpg" },
+      { name: "Serene Ash", price: 900, description: "Smoky sandalwood softened by dry floral powder. Calm, introspective, eternal.", img: "frag9.jpg" },
+      { name: "Fallen Light", price: 500, description: "Warm amber and dried florals wrapped in dusk. A glow that lingers even after the sun is gone.", img: "frag10.jpg" },
+      { name: "Citrus Mirage", price: 800, description: "An invigorating burst of grapefruit, lime, and bergamot with a touch of rosemary, like a fresh breeze over a sun-drenched citrus orchard.", img: "frag7.jpg" }
+    ];
+
+    // Function to render the product cards dynamically
+    function renderProducts() {
+      const productGallery = document.getElementById("product-gallery");
+
+      products.forEach(product => {
+        // Create the product card
+        const productCard = document.createElement("div");
+        productCard.classList.add("product-card");
+
+        // Add the content inside the product card
+        productCard.innerHTML = `
+          <div class="product-img">
+            <img src="${product.img}" alt="${product.name}">
+          </div>
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <p>Price: ${product.price} berries</p>
+            <button class="add-to-cart" onclick="addToCart('${product.name}', '${product.description}', ${product.price}, '${product.img}')">Add to Cart</button>
+          </div>
+        `;
+
+        // Append the product card to the gallery
+        productGallery.appendChild(productCard);
+      });
+    }
+
+    // Call the function to render products when the page loads
+    renderProducts();
+
+    // Function to add a product to the cart (localStorage)
+    function addToCart(name, description, price, img) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      const existingProductIndex = cart.findIndex(product => product.name === name);
+
+      if (existingProductIndex === -1) {
+        cart.push({ name, description, price, img, quantity: 1 });
+      } else {
+        cart[existingProductIndex].quantity += 1;
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${name} has been added to your cart.`);
+    }
+  </script>
+
+  <footer class="footer">
+    <p>&copy; 2025 Fleur & Fern. All rights reserved.</p>
+    <p>Gently shaped in harmony with nature — site developed & designed by Farah Derbel</p>
+  </footer>
+</body>
+</html>
