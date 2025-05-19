@@ -1,30 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Inscription | Fleur & Fern</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <title>Fleur & Fern</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
   <style>
-    :root {
-      --olive: #4B6F44;
-      --cream: #f4f1ee;
-      --text-dark: #2e2a26;
-      --accent: #c8b6a6;
-      --light-gray: #ddd;
-      --soft-beige: #f1ebe3;
-      --warm-peach: #f6d1b1;
-      --deep-rose: #d2a39c;
-    }
-
-    body {
-      font-family: 'Georgia', serif;
-      background-color: var(--cream);
-      color: var(--text-dark);
-      padding: 40px 20px;
-      margin: 0;
-      background-image: linear-gradient(to right, var(--soft-beige), var(--cream));
-      min-height: 100vh;
-    }
-
     .form-container {
       max-width: 600px;
       margin: auto;
@@ -91,19 +76,38 @@
     .footer p {
       margin: 5px;
     }
+
+    #confirmation {
+      display: none;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
+  <header>Fleur & Fern</div>
+    <nav class="nav-links">
+      <a href="projet.html">Home</a>
+      <a href="frag.html">Fragrance</a>
+      <a href="gifts.html">Gifts</a>
+      <a href="stores.html">Stores</a>
+    </nav>
+    <div class="user-actions">
+      <a href="signup.html">sign up</a>
+      <a href="signin.html">Login</a>
+      <a href="cart.html">Cart</a>
+      
+    </div>
+  </header>
   <div class="form-container">
-    <h2>Inscription</h2>
+    <h2>Sign Up</h2>
 
     <form id="registration-form">
       <div class="form-group">
-        <label for="first-name">Prénom</label>
+        <label for="first-name">First Name</label>
         <input type="text" id="first-name" name="first-name" required>
       </div>
       <div class="form-group">
-        <label for="last-name">Nom</label>
+        <label for="last-name">Last Name</label>
         <input type="text" id="last-name" name="last-name" required>
       </div>
       <div class="form-group">
@@ -111,67 +115,108 @@
         <input type="email" id="email" name="email" required>
       </div>
       <div class="form-group">
-        <label for="address">Adresse</label>
+        <label for="address">Address</label>
         <input type="text" id="address" name="address" required>
       </div>
       <div class="form-group">
-        <label for="phone">Numéro de téléphone</label>
+        <label for="phone">Phone Number</label>
         <input type="number" id="phone" name="phone" required>
       </div>
 
-      <button type="button" onclick="validatePurchase()">Valider Purchase</button>
+      <button type="submit">Confirm Sign Up</button>
     </form>
   </div>
 
-  <div class="footer">
-    <p>&copy; 2025 Fleur & Fern. All rights reserved.</p>
-    <p>Crafted with love from nature's essence.</p>
+  <div id="confirmation">
+    <p>Thank you for signing up!</p>
+    <button id="pdf-button">📄 Would you like to download the PDF?</button>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script>
-    // Dummy cartProducts for testing the purchase
-    let cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartProducts = [
+      { name: "Sakura Perfume", price: 60, volume: 100, quantity: 2, description: "Cherry blossom", img: "sakura.jpg" },
+      { name: "Jasmine Perfume", price: 50, volume: 50, quantity: 1, description: "Floral notes", img: "jasmin.jpg" }
+    ];
 
-    // Function to update the localStorage with the latest cart
-    function updateLocalStorage() {
-      localStorage.setItem('cart', JSON.stringify(cartProducts));
-    }
+    const form = document.getElementById('registration-form');
 
-    // Function to handle purchase confirmation
-    function validatePurchase() { 
-      // Get form values
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      document.getElementById("confirmation").style.display = "block";
+      const MyCart = JSON.parse(localStorage.getItem('cart')) || [];
+      const oldCart = JSON.parse(localStorage.getItem('oldCart')) || [];
+      const updatedCart = oldCart.concat(MyCart);
+      localStorage.setItem('oldCart', JSON.stringify(updatedCart));
+      
+    });
+
+    document.getElementById("pdf-button").addEventListener("click", function () {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      const olive = "#6e7c5d";
+      const blush = "#f3e8e3";
+      const beige = "#fefbf6";
+
       const firstName = document.getElementById('first-name').value;
       const lastName = document.getElementById('last-name').value;
       const email = document.getElementById('email').value;
       const address = document.getElementById('address').value;
       const phone = document.getElementById('phone').value;
 
-      // Check if all fields are filled
-      if (!firstName || !lastName || !email || !address || !phone) {
-        alert("Veuillez remplir tous les champs du formulaire.");
-        return;
+      doc.setFillColor(beige);
+      doc.rect(0, 0, 210, 297, 'F');
+
+      doc.setTextColor(olive);
+      doc.setFont("Georgia", "bold");
+      doc.setFontSize(20);
+      doc.text(" Registration Summary – Fleur & Fern ", 15, 30);
+
+      doc.setDrawColor(olive);
+      doc.setLineWidth(0.5);
+      doc.rect(15, 38, 180, 40, 'S');
+      doc.setFontSize(12);
+      doc.setTextColor("#000");
+      doc.setFont("Georgia", "normal");
+      doc.text(`Name: ${firstName} ${lastName}`, 20, 50);
+      doc.text(`Email: ${email}`, 20, 58);
+      doc.text(`Address: ${address}`, 20, 66);
+      doc.text(`Phone: ${phone}`, 20, 74);
+
+      let y = 90;
+      doc.setFontSize(14);
+      doc.setTextColor(olive);
+      doc.text(" Your Selected Items:", 15, y);
+
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      if (cart.length === 0) {
+        doc.setTextColor(120, 120, 120);
+        doc.setFontSize(12);
+        doc.text("No items in cart.", 20, y + 10);
+      } else {
+        cart.forEach((product, index) => {
+          const line = `• ${product.name} — ${product.volume}ml x${product.quantity} (${product.price} berries)`;
+          doc.setTextColor(45, 45, 45);
+          doc.setFontSize(12);
+          doc.text(line, 25, y + 10);
+          y += 10;
+        });
       }
 
-      // Confirmation alert with user info
-      alert(`Merci pour votre inscription, ${firstName} ${lastName} !\nVotre achat est en cours de préparation.\nEmail: ${email}\nAdresse: ${address}\nNuméro de téléphone: ${phone}`);
-      
-      // Empty the cart and update localStorage
-      cartProducts = [];
-      updateLocalStorage();
+      doc.setFontSize(10);
+      doc.setTextColor(100, 130, 100);
+      doc.text("Thank you for your trust – Fleur & Fern", 15, 280);
 
-      // Optional: Re-render the cart to reflect empty cart
-      // renderCart(); 
-
-      // Optional: Update the total price to 0
-      updateTotalPriceDisplay();
-    }
-
-    // Function to update the total price display
-    function updateTotalPriceDisplay() {
-      // Update the total price (implement this function based on your cart logic)
-      const totalPrice = cartProducts.reduce((total, product) => total + (product.price * product.quantity), 0);
-      console.log("Total price:", totalPrice);
-    }
+      doc.save("fleur-et-fern_summary.pdf");
+      localStorage.removeItem('cart');
+      localStorage.removeItem('totalPrice');
+    });
   </script>
+  <footer class="footer">
+    <p>&copy; 2025 Fleur & Fern. All rights reserved.</p>
+    <p>Gently shaped in harmony with nature — site developed & designed by Farah Derbel</p>
+  </footer>
 </body>
 </html>

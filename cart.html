@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <title>Fleur & Fern</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+
   <title>Your Cart | Fleur & Fern</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=GFS+Didot&family=Playfair+Display&display=swap');
     :root {
       --olive: #4B6F44;
       --cream: #f4f1ee;
@@ -15,47 +24,6 @@
       --deep-rose: #d2a39c;
       --vibrant-orange: #d55526;
     }
-    
-    body {
-      font-family: 'Georgia', serif;
-      background-color: var(--cream);
-      color: var(--text-dark);
-      padding: 40px 20px;
-      margin: 0;
-      background-image: linear-gradient(to right, var(--soft-beige), var(--cream));
-      min-height: 100vh;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: var(--cream);
-      padding: 25px 40px;
-      border-bottom: 1px solid var(--light-gray);
-    }
-
-    .logo {
-      font-family: 'GFS Didot', serif;
-      font-size: 2rem;
-      font-weight: bold;
-      color: var(--olive);
-    }
-
-    .nav-links a,
-    .user-actions a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: var(--text-dark);
-      font-size: 1.25rem;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a:hover,
-    .user-actions a:hover {
-      color: var(--olive);
-    }
-
     .cart-container {
       max-width: 900px;
       margin: auto;
@@ -146,7 +114,7 @@
       font-weight: 600;
       color: var(--olive);
     }
-
+    
     /* Adjusting the total price */
     .total-price {
       font-size: 36px;
@@ -173,32 +141,65 @@
     }
 
     .suggestions {
-      margin-top: 40px;
-      background-color: #ffe4e1; /* Updated color */
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
+  margin-top: 40px;
+  background-color: var(--soft-beige);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
 
-    .suggestions h3 {
-      font-size: 22px;
-      color: var(--olive);
-    }
+.suggestions h3 {
+  font-size: 22px;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
 
-    .suggestions button {
-      background-color: var(--olive);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-size: 18px;
-      margin-top: 20px;
-      border: none;
-      cursor: pointer;
-    }
+.suggestions p {
+  font-size: 16px;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  font-weight: 400;
+}
 
-    .suggestions button:hover {
-      background-color: #3a5536;
+.suggestions button {
+  background-color: var(--olive);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 18px;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.suggestions button:hover {
+  background-color: #8b9a6f;
+  transform: scale(1.05);
+}
+
+.special-gifts {
+  display: none;
+  margin-top: 1rem;
+  animation: fadeIn 0.4s ease forwards;
+  background-color: var(--soft-gray);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .footer {
@@ -232,6 +233,7 @@
     }
   </style>
 </head>
+
 <body>
   <header>Fleur & Fern</div>
     <nav class="nav-links">
@@ -241,35 +243,45 @@
       <a href="stores.html">Stores</a>
     </nav>
     <div class="user-actions">
-      <a href="login.html">Log in</a>
+      <a href="signup.html">sign up</a>
+      <a href="signin.html">Login</a>
       <a href="cart.html">Cart</a>
+      
     </div>
   </header>
 
   <div class="cart-container">
     <h2>Your Cart</h2>
-
-    <div id="product-list">
-      <!-- Dynamic Product List Will Be Added Here -->
-    </div>
+    <div id="product-list"></div>
 
     <div class="total-price">
       Total Price: <span id="total-price">0</span> berries
     </div>
-
     <a href="form.html">
       <button class="buy-btn">Confirm Purchase</button>
     </a>
-
     <div class="suggestions">
       <h3>Would you like something else?</h3>
       <p>Choose from our premium dried flower sets, or create a personalized arrangement!</p>
       <button onclick="showMoreSuggestions()">Yes, show me more!</button>
+
+      <div class="special-gifts">
+        <h3>Gift Sets & Special Offers</h3>
+        <form id="gift-form">
+          <label><input type="checkbox" name="gift" value="Luxury Dried Flower Perfume Set" data-price="2000"> Luxury Dried Flower Perfume Set — 2000 berries</label><br>
+          <label><input type="checkbox" name="gift" value="Eco-Friendly Subscription Box" data-price="1300"> Eco-Friendly Subscription Box — 1300 berries</label><br>
+          <label><input type="checkbox" name="gift" value="Custom Dried Flower Arrangement" data-price="650"> Custom Dried Flower Arrangement — 650 berries</label><br>
+          <label><input type="checkbox" name="gift" value="Personalized Perfume Gift Set" data-price="3000"> Personalized Perfume Gift Set — 3000 berries</label><br><br>
+
+          <button type="button" class="buy-btn" onclick="addGiftsToCart()">Add Selected Gifts to Cart</button>
+        </form>
+      </div>
     </div>
   </div>
 
   <script>
     let cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+    let selectedGifts = [];
 
     function updateTotalPriceDisplay() {
       const totalPrice = getTotalPrice();
@@ -278,89 +290,108 @@
     }
 
     function getTotalPrice() {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
-      if (cart.length === 0) {
-        return 0;
-      }
-  
-      let totalPrice = cart.reduce((total, product) => {
-        const volumeBerries = product.volume ? product.volume * 50 : 0;  // Add 50 berries per volume selected
-        return total + (product.price * product.quantity) + volumeBerries;  // Add volume berries separately
+      let total = cartProducts.reduce((total, product) => {
+        const volumeBerries = product.volume || 0;
+        return total + (product.price * product.quantity) + (volumeBerries * product.quantity);
       }, 0);
-  
-      return totalPrice;
+
+      selectedGifts.forEach(gift => {
+        total += gift.price;
+      });
+
+      return total;
     }
 
     function renderCart() {
       const productList = document.getElementById("product-list");
       productList.innerHTML = '';
-  
+
       if (cartProducts.length === 0) {
         productList.innerHTML = '<p>Your cart is empty.</p>';
-      } else {
-        cartProducts.forEach(product => {
-          const productElement = document.createElement("div");
-          productElement.classList.add("product");
-  
-          productElement.innerHTML = `
-            <img src="${product.img}" alt="${product.name}">
-            <div class="product-details">
-              <h3>${product.name}</h3>
-              <p>${product.description}</p>
-              <p class="product-price">Price: $${product.price} each</p>
-              <div class="quantity-control">
-                <p>Quantity:</p>
-                <button onclick="changeQty(-1, '${product.name}')">-</button>
-                <span id="qty-${product.name}">${product.quantity}</span>
-                <button onclick="changeQty(1, '${product.name}')">+</button>
-              </div>
-              <div class="volume-selection">
-                <label>Choose Volume:</label>
-                <input type="radio" name="volume-${product.name}" value="50" ${product.volume === 50 ? 'checked' : ''} onclick="updateVolume('${product.name}', 50)"> 50ml
-                <input type="radio" name="volume-${product.name}" value="100" ${product.volume === 100 ? 'checked' : ''} onclick="updateVolume('${product.name}', 100)"> 100ml
-                <input type="radio" name="volume-${product.name}" value="200" ${product.volume === 200 ? 'checked' : ''} onclick="updateVolume('${product.name}', 200)"> 200ml
-                <input type="radio" name="volume-${product.name}" value="300" ${product.volume === 300 ? 'checked' : ''} onclick="updateVolume('${product.name}', 300)"> 300ml
-              </div>
-            </div>
-          `;
-          productList.appendChild(productElement);
-        });
+        return;
       }
+
+      cartProducts.forEach(product => {
+        const berries = product.volume || 0;
+        const totalPrice = (product.price * product.quantity) + (berries * product.quantity);
+
+        const productElement = document.createElement("div");
+        productElement.classList.add("product");
+
+        productElement.innerHTML = `
+          <img src="${product.img}" alt="${product.name}">
+          <div class="product-details">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <p class="product-price">Base Price: ${product.price} berries</p>
+            <p class="product-berries">+ ${berries} berries (for ${product.volume || 0}ml)</p>
+            <p class="product-total">Total: ${(product.price + berries)} berries each x ${product.quantity}</p>
+            <div class="quantity-control">
+              <p>Quantity:</p>
+              <button onclick="changeQty(-1, '${product.name}')">-</button>
+              <span id="qty-${product.name}">${product.quantity}</span>
+              <button onclick="changeQty(1, '${product.name}')">+</button>
+            </div>
+            <div class="volume-selection">
+              <label>Choose Volume:</label>
+              <input type="radio" name="volume-${product.name}" value="50" ${product.volume === 50 ? 'checked' : ''} onclick="updateVolume('${product.name}', 50)"> 50ml
+              <input type="radio" name="volume-${product.name}" value="100" ${product.volume === 100 ? 'checked' : ''} onclick="updateVolume('${product.name}', 100)"> 100ml
+              <input type="radio" name="volume-${product.name}" value="200" ${product.volume === 200 ? 'checked' : ''} onclick="updateVolume('${product.name}', 200)"> 200ml
+              <input type="radio" name="volume-${product.name}" value="300" ${product.volume === 300 ? 'checked' : ''} onclick="updateVolume('${product.name}', 300)"> 300ml
+            </div>
+          </div>
+        `;
+
+        productList.appendChild(productElement);
+      });
+
+      updateTotalPriceDisplay();
     }
 
-    function changeQty(val, productName) {
-      const product = cartProducts.find(p => p.name === productName);
+    function changeQty(amount, productName) {
+      const product = cartProducts.find(item => item.name === productName);
       if (product) {
-        product.quantity = Math.max(1, product.quantity + val);
-        document.getElementById(`qty-${product.name}`).textContent = product.quantity;
-        updateLocalStorage();
+        product.quantity = Math.max(1, product.quantity + amount);
+        localStorage.setItem('cart', JSON.stringify(cartProducts));
         renderCart();
-        updateTotalPriceDisplay();
       }
     }
 
     function updateVolume(productName, volume) {
-      const product = cartProducts.find(p => p.name === productName);
+      const product = cartProducts.find(item => item.name === productName);
       if (product) {
         product.volume = volume;
-        updateLocalStorage();
+        localStorage.setItem('cart', JSON.stringify(cartProducts));
         renderCart();
-        updateTotalPriceDisplay();
       }
     }
 
-    function updateLocalStorage() {
-      localStorage.setItem('cart', JSON.stringify(cartProducts));
+    function showMoreSuggestions() {
+      document.querySelector('.special-gifts').style.display = 'block';
+    }
+
+    function addGiftsToCart() {
+      const giftForm = document.getElementById('gift-form');
+      selectedGifts = [];
+
+      const selectedGiftElements = giftForm.querySelectorAll('input[type="checkbox"]:checked');
+      selectedGiftElements.forEach(giftElement => {
+        selectedGifts.push({
+          name: giftElement.value,
+          price: parseInt(giftElement.dataset.price),
+        });
+      });
+      const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+      const updatedCart = existingCart.concat(selectedGifts);
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+      updateTotalPriceDisplay();
     }
 
     renderCart();
-    updateTotalPriceDisplay();
   </script>
-
   <footer class="footer">
     <p>&copy; 2025 Fleur & Fern. All rights reserved.</p>
     <p>Gently shaped in harmony with nature — site developed & designed by Farah Derbel</p>
-  </footer>
+    </footer>
 </body>
 </html>

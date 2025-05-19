@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Account - Fleur & Fern</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #6e7c5d;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .account-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .account-container h2 {
+      font-size: 28px;
+      color: #6e7c5d;
+      margin-bottom: 30px;
+    }
+
+    .profile-group {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .profile-item {
+      width: 48%;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #3a5536;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f0f0f0;
+    }
+
+    input:disabled {
+      color: #777;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    button {
+      background-color: #3a5536;
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2e422a;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My Account - Fleur & Fern</h1>
+  </header>
+
+  <div class="account-container">
+    <h2>My Information</h2>
+    <div class="profile-group">
+      <div class="profile-item">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" disabled />
+      </div>
+      <div class="profile-item">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" disabled />
+      </div>
+      <div class="profile-item">
+        <label for="email">Email</label>
+        <input type="email" id="email" disabled />
+      </div>
+      <div class="profile-item">
+        <label for="address">Address</label>
+        <input type="text" id="address" disabled />
+      </div>
+      <div class="profile-item">
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" disabled />
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button id="edit-button">Edit</button>
+      <button id="save-button" style="display: none;">Save</button>
+      <button id="logout">Log Out</button>
+    </div>
+  </div>
+
+  <script>
+    
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if (isLoggedIn !== "true") {
+      
+      window.location.href = "login.html";
+    } else {
+      
+      const user = JSON.parse(localStorage.getItem("fleurFernUser"));
+
+      
+      document.getElementById("first-name").value = user.firstName || "";
+      document.getElementById("last-name").value = user.lastName || "";
+      document.getElementById("email").value = user.email || "";
+      document.getElementById("address").value = user.address || "";
+      document.getElementById("phone").value = user.phone || "";
+    }
+
+    document.getElementById("logout").addEventListener("click", function () {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("fleurFernUser");
+      window.location.href = "login.html";
+      localStorage.removeItem('oldCart');
+    });
+
+    
+    const editButton = document.getElementById("edit-button");
+    const saveButton = document.getElementById("save-button");
+    const inputs = document.querySelectorAll("input");
+
+    editButton.addEventListener("click", () => {
+      inputs.forEach(input => input.disabled = false);
+      editButton.style.display = "none";
+      saveButton.style.display = "inline-block";
+    });
+
+    saveButton.addEventListener("click", () => {
+      const updatedUser = {
+        firstName: document.getElementById("first-name").value,
+        lastName: document.getElementById("last-name").value,
+        email: document.getElementById("email").value,
+        address: document.getElementById("address").value,
+        phone: document.getElementById("phone").value,
+      };
+
+      localStorage.setItem("fleurFernUser", JSON.stringify(updatedUser));
+
+      inputs.forEach(input => input.disabled = true);
+      saveButton.style.display = "none";
+      editButton.style.display = "inline-block";
+    });
+  </script>
+
+</body>
+</html>

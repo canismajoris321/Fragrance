@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Cart | Fleur & Fern</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Playfair+Display&display=swap" />
+  <style>
+    :root {
+      --olive: #4B6F44;
+      --cream: #f4f1ee;
+      --text-dark: #2e2a26;
+      --accent: #c8b6a6;
+      --light-gray: #ddd;
+      --soft-beige: #f1ebe3;
+      --warm-peach: #f6d1b1;
+      --deep-rose: #d2a39c;
+      --vibrant-orange: #d55526;
+    }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      background-color: var(--cream);
+      color: var(--text-dark);
+      margin: 0;
+      padding: 40px 20px;
+      background-image: linear-gradient(to right, var(--soft-beige), var(--cream));
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--cream);
+      padding: 25px 40px;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .logo {
+      font-family: 'GFS Didot', serif;
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--olive);
+    }
+
+    .nav-links a, .user-actions a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 1.25rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover, .user-actions a:hover {
+      color: var(--olive);
+    }
+
+    .cart-container {
+      max-width: 900px;
+      margin: auto;
+      background-color: var(--cream);
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid var(--light-gray);
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+      text-align: center;
+      font-family: 'Georgia', serif;
+      font-weight: 700;
+    }
+
+    .product {
+      display: flex;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--light-gray);
+      padding-bottom: 15px;
+    }
+
+    .product img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--light-gray);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin-right: 20px;
+    }
+
+    .product-details h3 {
+      font-size: 24px;
+      color: var(--olive);
+      margin: 0 0 10px;
+    }
+
+    .product-details p {
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .quantity-control button {
+      background-color: var(--olive);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 8px 14px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .quantity-control button:hover {
+      background-color: #3a5536;
+      transform: scale(1.05);
+    }
+
+    .product-price {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--olive);
+    }
+
+    .volume-selection {
+      margin-top: 10px;
+    }
+
+    .total-price {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--vibrant-orange);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .buy-btn {
+      background-color: var(--olive);
+      color: white;
+      width: 100%;
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .buy-btn:hover {
+      background-color: #3a5536;
+    }
+
+    .suggestions {
+      margin-top: 40px;
+      background-color: #ffe4e1;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 14px;
+      color: var(--accent);
+    }
+
+    @media (max-width: 600px) {
+      .product {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .product img {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Fleur & Fern</div>
+    <nav class="nav-links">
+      <a href="projet.html">Home</a>
+      <a href="frag.html">Fragrance</a>
+      <a href="gifts.html">Gifts</a>
+      <a href="stores.html">Stores</a>
+    </nav>
+    <div class="user-actions">
+      <a href="login.html">Log in</a>
+      <a href="cart.html">Cart</a>
+    </div>
+  </header>
+
+  <div class="cart-container">
+    <h2>Your Cart</h2>
+    <div id="product-list"></div>
+    <div class="total-price">Total Price: <span id="total-price">0</span> berries</div>
+    <a href="form.html"><button class="buy-btn">Confirm Purchase</button></a>
+
+    <div class="suggestions">
+      <h3>Would you like something else?</h3>
+      <p>Choose from our premium dried flower sets or personalize your bouquet!</p>
+      <button onclick="alert('More suggestions coming soon!')">Yes, show me more!</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 Fleur & Fern. All rights reserved.</p>
+    <p>Gently shaped in harmony with nature — site developed & designed by Farah Derbel</p>
+  </footer>
+
+  <script>
+    let cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function updateTotalPriceDisplay() {
+      const total = cartProducts.reduce((sum, p) => {
+        const volumeBerries = p.volume ? p.volume * 50 : 0;
+        return sum + (p.price * p.quantity) + volumeBerries;
+      }, 0);
+      document.getElementById("total-price").textContent = total;
+      localStorage.setItem("totalPrice", total);
+    }
+
+    function renderCart() {
+      const list = document.getElementById("product-list");
+      list.innerHTML = "";
+
+      if (cartProducts.length === 0) {
+        list.innerHTML = "<p>Your cart is empty.</p>";
+        return;
+      }
+
+      cartProducts.forEach(p => {
+        const item = document.createElement("div");
+        item.className = "product";
+        item.innerHTML = `
+          <img src="${p.img}" alt="${p.name}" />
+          <div class="product-details">
+            <h3>${p.name}</h3>
+            <p>${p.description}</p>
+            <p class="product-price">Price: $${p.price}</p>
+            <div class="quantity-control">
+              <button onclick="changeQty(-1, '${p.name}')">-</button>
+              <span id="qty-${p.name}">${p.quantity}</span>
+              <button onclick="changeQty(1, '${p.name}')">+</button>
+            </div>
+            <div class="volume-selection">
+              <label>Volume:</label>
+              ${[50, 100, 200, 300].map(v => `
+                <input type="radio" name="volume-${p.name}" value="${v}" ${p.volume === v ? 'checked' : ''} onclick="updateVolume('${p.name}', ${v})"> ${v}ml
+              `).join("")}
+            </div>
+          </div>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    function changeQty(val, name) {
+      const p = cartProducts.find(pr => pr.name === name);
+      if (!p) return;
+      p.quantity = Math.max(1, p.quantity + val);
+      updateCart();
+    }
+
+    function updateVolume(name, volume) {
+      const p = cartProducts.find(pr => pr.name === name);
+      if (p) {
+        p.volume = volume;
+        updateCart();
+      }
+    }
+
+    function updateCart() {
+      localStorage.setItem("cart", JSON.stringify(cartProducts));
+      renderCart();
+      updateTotalPriceDisplay();
+    }
+
+    renderCart();
+    updateTotalPriceDisplay();
+  </script>
+</body>
+</html>

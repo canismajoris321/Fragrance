@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <title>Fleur & Fern</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+
+</head>
+<style>
+
+.login-wrapper {
+  display: flex;
+  height: 85vh;
+  width: 100%;
+}
+
+
+.login-right {
+  width: 50%;
+  overflow: hidden;
+}
+
+.login-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login-left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  background-color: #fefdfb;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin: 1rem 0 0.5rem;
+}
+
+form input {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+form button {
+  margin-top: 2rem;
+  padding: 0.8rem;
+  background-color: #647153;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #4f5d40;
+}
+
+
+@media (max-width: 768px) {
+  .login-wrapper {
+    flex-direction: column;
+  }
+
+  .login-left,
+  .login-right {
+    width: 100%;
+    height: 50vh;
+  }
+
+  .login-right img {
+    height: 50vh;
+  }
+}
+
+
+
+</style>
+<body>
+  <header>Fleur & Fern</div>
+    <nav class="nav-links">
+      <a href="projet.html">Home</a>
+      <a href="frag.html">Fragrance</a>
+      <a href="gifts.html">Gifts</a>
+      <a href="stores.html">Stores</a>
+    </nav>
+    <div class="user-actions">
+      <a href="signup.html">sign up</a>
+      <a href="signin.html">Login</a>
+      <a href="cart.html">Cart</a>
+      
+    </div>
+  </header>
+
+<div class="login-wrapper">
+  <div class="login-right">
+    <img src="signup.jpg" alt="Dried flowers" />
+  </div>
+
+  <div class="login-left">
+    <h2>Create Account</h2>
+    <form id="signupForm">
+      <label for="new-name">Full Name</label>
+      <input type="text" id="new-name" required>
+
+      <label for="new-email">Email Address</label>
+      <input type="email" id="new-email" required>
+
+      <label for="new-password">Password</label>
+      <input type="password" id="new-password" required>
+
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+</div>
+
+
+  <script scr="script.js"></script>
+
+
+  <footer class="footer">
+    <p>&copy; 2025 Fleur & Fern. All rights reserved.</p>
+    <p>Gently shaped in harmony with nature — site developed & designed by Farah Derbel</p>
+    </footer>
+</body>
+</html>

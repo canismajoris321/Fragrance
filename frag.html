@@ -15,20 +15,21 @@
       <a href="stores.html">Stores</a>
     </nav>
     <div class="user-actions">
-      <a href="login.html">Log in</a>
+      <a href="signup.html">sign up</a>
+      <a href="signin.html">Login</a>
       <a href="cart.html">Cart</a>
+      
     </div>
   </header>
 
   <section class="product-section">
     <h2>Our Fragrance Collection</h2>
     <div class="product-gallery" id="product-gallery">
-      <!-- Product Cards will be dynamically generated here -->
+      
     </div>
   </section>
 
   <script>
-    // Array containing all the product data
     const products = [
       { name: "Golden Hour", price: 350, description: "Warm and radiant with hints of amber and rosewood.", img: "ads6.PNG" },
       { name: "Ancient Mist", price: 600, description: "Smoky lavender, myrrh, and paper-dry florals. Ghosts of old libraries.", img: "frag2.jpg" },
@@ -45,18 +46,18 @@
       { name: "Serene Ash", price: 900, description: "Smoky sandalwood softened by dry floral powder. Calm, introspective, eternal.", img: "frag9.jpg" },
       { name: "Fallen Light", price: 500, description: "Warm amber and dried florals wrapped in dusk. A glow that lingers even after the sun is gone.", img: "frag10.jpg" },
       { name: "Citrus Mirage", price: 800, description: "An invigorating burst of grapefruit, lime, and bergamot with a touch of rosemary, like a fresh breeze over a sun-drenched citrus orchard.", img: "frag7.jpg" }
+      
+    
     ];
-
-    // Function to render the product cards dynamically
     function renderProducts() {
       const productGallery = document.getElementById("product-gallery");
 
       products.forEach(product => {
-        // Create the product card
+
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
 
-        // Add the content inside the product card
+       
         productCard.innerHTML = `
           <div class="product-img">
             <img src="${product.img}" alt="${product.name}">
@@ -69,15 +70,14 @@
           </div>
         `;
 
-        // Append the product card to the gallery
         productGallery.appendChild(productCard);
       });
     }
 
-    // Call the function to render products when the page loads
+
     renderProducts();
 
-    // Function to add a product to the cart (localStorage)
+  
     function addToCart(name, description, price, img) {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
